@@ -1,0 +1,150 @@
+[gd_scene load_steps=23 format=3 uid="uid://ctffpuux3mbt3"]
+
+[ext_resource type="Script" path="res://cena aviao/script/aviao_script.gd" id="1_idxjf"]
+[ext_resource type="Material" uid="uid://us20ekrgrwa2" path="res://cena aviao/laranjaAviao.tres" id="2_gyu3q"]
+[ext_resource type="Material" uid="uid://bkdpxind2mptn" path="res://cena aviao/vermelhoAviao.tres" id="3_84mn1"]
+[ext_resource type="Script" path="res://cena aviao/script/character_body_3d.gd" id="4_3soqf"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jqxyh"]
+material = ExtResource("2_gyu3q")
+top_radius = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ln1e8"]
+material = ExtResource("2_gyu3q")
+top_radius = 0.45
+bottom_radius = 0.22
+height = 0.43
+
+[sub_resource type="BoxMesh" id="BoxMesh_hefqn"]
+material = ExtResource("3_84mn1")
+size = Vector3(0.08, 1.41, 4.425)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_680q2"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n4hwf"]
+material = SubResource("StandardMaterial3D_680q2")
+size = Vector3(0.07, 0.69, 0.625)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r6lyd"]
+material = ExtResource("3_84mn1")
+size = Vector3(0.05, 0.15, 1.385)
+
+[sub_resource type="BoxMesh" id="BoxMesh_txua1"]
+material = ExtResource("3_84mn1")
+size = Vector3(0.06, 0.395, 1.655)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3h38m"]
+material = ExtResource("3_84mn1")
+size = Vector3(0.05, 0.395, 1.235)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1q8oq"]
+material = ExtResource("2_gyu3q")
+top_radius = 0.19
+bottom_radius = 0.38
+height = 1.74
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ldc8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hsaoj"]
+material = SubResource("StandardMaterial3D_5ldc8")
+size = Vector2(500, 500)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sjivb"]
+data = PackedVector3Array(250, 0, 250, -250, 0, 250, 250, 0, -250, -250, 0, 250, -250, 0, -250, 250, 0, -250)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dkn2e"]
+
+[sub_resource type="Sky" id="Sky_egx8l"]
+sky_material = SubResource("ProceduralSkyMaterial_dkn2e")
+
+[sub_resource type="Environment" id="Environment_txfqj"]
+background_mode = 2
+sky = SubResource("Sky_egx8l")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m7xya"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mgef3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qj3ke"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[node name="Cena3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.3944, 3.96858, 12.4137)
+script = ExtResource("1_idxjf")
+
+[node name="Mesh" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -51.3268, 4.95531, -11.8272)
+mesh = SubResource("CylinderMesh_jqxyh")
+
+[node name="Mesh7" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -50.1257, 4.95531, -11.8272)
+mesh = SubResource("CylinderMesh_ln1e8")
+
+[node name="Mesh3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -51.3268, 5.61034, -11.8272)
+mesh = SubResource("BoxMesh_hefqn")
+
+[node name="Mesh9" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -51.3268, 5.28203, -10.3084)
+mesh = SubResource("BoxMesh_n4hwf")
+
+[node name="Mesh10" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -51.3268, 5.28671, -13.2053)
+mesh = SubResource("BoxMesh_n4hwf")
+
+[node name="helice" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.8764, 4.96006, -11.8272)
+mesh = SubResource("BoxMesh_r6lyd")
+
+[node name="Mesh5" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -53.768, 5.22027, -11.8272)
+mesh = SubResource("BoxMesh_txua1")
+
+[node name="Mesh6" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.0505407, -2.2092e-09, -0.998722, 0.998722, -4.36555e-08, 0.0505407, -53.768, 5.22027, -11.8272)
+mesh = SubResource("BoxMesh_3h38m")
+
+[node name="Mesh4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -51.3268, 4.97339, -11.8272)
+mesh = SubResource("BoxMesh_hefqn")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.147102, -0.989121, 0, 0.989121, 0.147102, 0, 0, 0, 1, -53.1159, 5.10343, -11.8272)
+mesh = SubResource("CylinderMesh_1q8oq")
+
+[node name="cenario" type="Node3D" parent="."]
+
+[node name="chao" type="MeshInstance3D" parent="cenario"]
+mesh = SubResource("PlaneMesh_hsaoj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="cenario/chao"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cenario/chao/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_sjivb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_txfqj")
+camera_attributes = SubResource("CameraAttributesPractical_m7xya")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("4_3soqf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02318, 0)
+mesh = SubResource("CapsuleMesh_mgef3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02318, 0)
+shape = SubResource("ConvexPolygonShape3D_qj3ke")
+
+[node name="pescoco" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40288, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/pescoco"]

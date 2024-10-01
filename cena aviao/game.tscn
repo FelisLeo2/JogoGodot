@@ -1,0 +1,82 @@
+[gd_scene load_steps=15 format=3 uid="uid://ctffpuux3mbt3"]
+
+[ext_resource type="Script" path="res://cena aviao/script/aviao.gd" id="1_gs7uk"]
+[ext_resource type="Texture2D" uid="uid://u6ysh325e2ah" path="res://textures/leafy_grass_diff_4k.png" id="1_o74ic"]
+[ext_resource type="PackedScene" uid="uid://ddrbexd6vxlam" path="res://cena aviao/aviao.tscn" id="1_yl2t8"]
+[ext_resource type="Texture2D" uid="uid://ppaq4q2pen6f" path="res://textures/asphalt_04_diff_4k.png" id="2_24fhr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pf6jk"]
+albedo_texture = ExtResource("1_o74ic")
+uv1_scale = Vector3(0, 0, 0)
+uv1_triplanar_sharpness = 0.594604
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ldc8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hsaoj"]
+material = SubResource("StandardMaterial3D_5ldc8")
+size = Vector2(500, 500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dl5od"]
+albedo_texture = ExtResource("2_24fhr")
+uv1_scale = Vector3(0, 0, 0)
+uv1_triplanar = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sjivb"]
+data = PackedVector3Array(250, 0, 250, -250, 0, 250, 250, 0, -250, -250, 0, 250, -250, 0, -250, 250, 0, -250)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dkn2e"]
+
+[sub_resource type="Sky" id="Sky_egx8l"]
+sky_material = SubResource("ProceduralSkyMaterial_dkn2e")
+
+[sub_resource type="Environment" id="Environment_txfqj"]
+background_mode = 2
+sky = SubResource("Sky_egx8l")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m7xya"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eqbcu"]
+size = Vector3(4.19507, 1.42957, 4.46948)
+
+[node name="Cena3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.58
+shadow_enabled = true
+
+[node name="cenario" type="Node3D" parent="."]
+
+[node name="chao" type="MeshInstance3D" parent="cenario"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.212, 0, -0.378)
+material_override = SubResource("StandardMaterial3D_pf6jk")
+mesh = SubResource("PlaneMesh_hsaoj")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="cenario/chao"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43.535, 0, 12.09)
+material_override = SubResource("StandardMaterial3D_dl5od")
+size = Vector3(960.989, 1, 24.4247)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="cenario/chao"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cenario/chao/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_sjivb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_txfqj")
+camera_attributes = SubResource("CameraAttributesPractical_m7xya")
+
+[node name="Aviao" type="CharacterBody3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45.6126, 1.97229, -91.3811)
+script = ExtResource("1_gs7uk")
+
+[node name="Aviao_object" parent="Aviao" instance=ExtResource("1_yl2t8")]
+transform = Transform3D(-4.34719e-08, 4.56908e-09, 1, 0.104528, 0.994522, 0, -0.994522, 0.104528, -4.37114e-08, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Aviao"]
+transform = Transform3D(1, -7.10543e-15, 7.10543e-15, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.034996, 3.83953, 4.10872)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Aviao"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.096, 0, 0.694)
+shape = SubResource("BoxShape3D_eqbcu")

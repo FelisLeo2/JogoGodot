@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctffpuux3mbt3"]
+
+[ext_resource type="Script" path="res://cena aviao/aviao.gd" id="1_gs7uk"]
+[ext_resource type="PackedScene" uid="uid://cjk8jhyhtc2w2" path="res://aviao.tscn" id="1_yl2t8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ldc8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hsaoj"]
+material = SubResource("StandardMaterial3D_5ldc8")
+size = Vector2(500, 500)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sjivb"]
+data = PackedVector3Array(250, 0, 250, -250, 0, 250, 250, 0, -250, -250, 0, 250, -250, 0, -250, 250, 0, -250)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dkn2e"]
+
+[sub_resource type="Sky" id="Sky_egx8l"]
+sky_material = SubResource("ProceduralSkyMaterial_dkn2e")
+
+[sub_resource type="Environment" id="Environment_txfqj"]
+background_mode = 2
+sky = SubResource("Sky_egx8l")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m7xya"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eqbcu"]
+size = Vector3(4.19507, 1.42957, 4.46948)
+
+[node name="Cena3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_energy = 0.58
+shadow_enabled = true
+
+[node name="cenario" type="Node3D" parent="."]
+
+[node name="chao" type="MeshInstance3D" parent="cenario"]
+mesh = SubResource("PlaneMesh_hsaoj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="cenario/chao"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cenario/chao/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_sjivb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_txfqj")
+camera_attributes = SubResource("CameraAttributesPractical_m7xya")
+
+[node name="Aviao" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29481, 0)
+script = ExtResource("1_gs7uk")
+
+[node name="Aviao_object" parent="Aviao" instance=ExtResource("1_yl2t8")]
+transform = Transform3D(0.994522, -0.104528, 0, 0.104528, 0.994522, 0, 0, 0, 1, 24.4097, 0.879981, 12.6587)
+
+[node name="Camera3D" type="Camera3D" parent="Aviao"]
+transform = Transform3D(-4.37114e-08, 0.573576, -0.819152, 0, 0.819152, 0.573576, 1, 2.50718e-08, -3.58063e-08, 20.5524, 3.74972, 12.6587)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Aviao"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8244, 0.754986, 12.6568)
+shape = SubResource("BoxShape3D_eqbcu")

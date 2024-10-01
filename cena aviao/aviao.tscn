@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddrbexd6vxlam"]
+
+[ext_resource type="Material" uid="uid://bkdpxind2mptn" path="res://material/vermelhoAviao.tres" id="1_a1oqs"]
+[ext_resource type="Material" uid="uid://us20ekrgrwa2" path="res://material/laranjaAviao.tres" id="2_a4t70"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jqxyh"]
+top_radius = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ln1e8"]
+top_radius = 0.45
+bottom_radius = 0.22
+height = 0.43
+
+[sub_resource type="BoxMesh" id="BoxMesh_hefqn"]
+size = Vector3(0.08, 1.41, 4.425)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n4hwf"]
+size = Vector3(0.07, 0.465, 0.625)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r6lyd"]
+size = Vector3(0.05, 0.15, 1.385)
+
+[sub_resource type="BoxMesh" id="BoxMesh_txua1"]
+size = Vector3(0.06, 0.395, 1.655)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1q8oq"]
+top_radius = 0.19
+bottom_radius = 0.38
+height = 1.74
+
+[node name="Cena3D" type="Node3D"]
+
+[node name="Body" type="Node3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("1_a1oqs")
+mesh = SubResource("CylinderMesh_jqxyh")
+
+[node name="Mesh7" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.20107, 0, 0)
+material_override = ExtResource("2_a4t70")
+mesh = SubResource("CylinderMesh_ln1e8")
+
+[node name="Mesh3" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.471679, 0)
+material_override = ExtResource("1_a1oqs")
+mesh = SubResource("BoxMesh_hefqn")
+
+[node name="Mesh9" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.218455, 1.51885)
+mesh = SubResource("BoxMesh_n4hwf")
+
+[node name="Mesh10" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.218455, -1.37812)
+mesh = SubResource("BoxMesh_n4hwf")
+
+[node name="helice" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45924, 0.0239951, 0.00324845)
+material_override = ExtResource("2_a4t70")
+mesh = SubResource("BoxMesh_r6lyd")
+
+[node name="Mesh5" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -2.4412, 0.264966, 0)
+material_override = ExtResource("2_a4t70")
+mesh = SubResource("BoxMesh_txua1")
+
+[node name="Mesh4" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.0180759, 0)
+material_override = ExtResource("1_a1oqs")
+mesh = SubResource("BoxMesh_hefqn")
+
+[node name="Mesh2" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(0.147102, -0.989121, 0, 0.989121, 0.147102, 0, 0, 0, 1, -1.78911, 0.148126, 0)
+material_override = ExtResource("1_a1oqs")
+mesh = SubResource("CylinderMesh_1q8oq")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.817, -0.59, 0)
+material_override = ExtResource("2_a4t70")
+radius = 0.144148
+height = 0.117629
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.588, -0.718632, 0.4)
+material_override = ExtResource("2_a4t70")
+radius = 0.144148
+height = 0.117629
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.588, -0.718632, -0.4)
+material_override = ExtResource("2_a4t70")
+radius = 0.144148
+height = 0.117629
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.841663, -0.440986, 3.74913e-05)
+radius = 0.04
+height = 0.4
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0.585, -0.441, 0.4)
+radius = 0.04
+height = 0.4
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Body"]
+transform = Transform3D(0.999547, 0, 0, 0, 0.995744, -0.0871163, 0, 0.0871163, 0.995744, 0.585, -0.441, -0.4)
+radius = 0.04
+height = 0.4
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.399, 0.567, 0)
+material_override = ExtResource("2_a4t70")
+size = Vector3(0.382813, 0.652466, 0.0831909)
